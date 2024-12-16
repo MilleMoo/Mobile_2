@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert} from "react-native";
 
 const ListScreen = () => {
     const friends = [
@@ -13,26 +13,37 @@ const ListScreen = () => {
         {name: 'H',age: 20, relation: "school"},
     ]
     return (
+        <View style = {styles.container}>\
+        <Text style = {{ 
+            fontSize : 30, 
+            //marginBottom : 30,
+            margin : 50,
+            color: "#F3FCFF",
+            }}>ListFriendName</Text>
         <FlatList
             keyExtractor={friend => friend.name}
             data={friends}
             renderItem={({ item }) => { 
                 return (
-                    <View style={{
-                        margin: 0,
-                        marginLeft: 10,
-                        marginRight: 200,
-                        borderColor: "black",
-                        backgroundColor: "#B8CBD8",
-                        padding: 10,
-                        borderWidth: 2,
-                    }}>
-                        <Text style={styles.TextStyle}>Friend {item.name} - {item.age}</Text>
-                        <Text style={{ fontSize: 20 }}>{item.relation}</Text>
-                    </View>
+                        <TouchableOpacity style={styles.button} onPress={() => Alert.alert("Calling","Calling to Friend "+ item.name)}>
+                        <View style={{
+                            margin: 0.5,
+                            borderColor: "#01497c",
+                            backgroundColor: "#2c7da0",
+                            padding: 5,
+                            paddingLeft: 70,
+                            paddingRight: 70,
+                            borderWidth: 1.5,
+                            borderRadius: 10
+                        }}>
+                            <Text style={styles.TextStyle}>Friend {item.name} - Age {item.age}</Text>
+                            <Text style={{ fontSize: 20,color: "#F3FCFF",textAlign : "center" }}>{item.relation}</Text>
+                        </View>
+                        </TouchableOpacity>
                 )
             }}
-        />
+            />
+        </View>
         //<View style={styles.container}>
         //   <Text style={styles.TextStyle}>this is the List Screen</Text>
         // </View>
@@ -42,11 +53,14 @@ const ListScreen = () => {
 const styles = StyleSheet.create({
     TextStyle: {
         fontSize : 28,
+        textAlign : "center",
+        color: "#F3FCFF",
     },
     container: {
         flex: 1,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor : "#01497c",
     }
 });
 
