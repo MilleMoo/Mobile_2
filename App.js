@@ -4,13 +4,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "./src/screens/HomeScreen";
 import ComponentScreen from "./src/screens/ComponentScreen";
 import ListScreen from "./src/screens/ListScreen";
+import ModalScreen from "./src/screens/ModalScreen";
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="ListScreen">
+      <Stack.Navigator initialRouteName="Modal">
         <Stack.Screen
           name="Home"
           component={HomeScreen}
@@ -25,6 +26,11 @@ const App = () => {
           name="ListScreen"
           component={ListScreen}
           options={{ title: "List Screen" }}
+        />
+        <Stack.Screen
+          name="Modal"
+          component={ModalScreen}
+          options={{ title: "Modal Screen" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
