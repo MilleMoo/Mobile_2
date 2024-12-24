@@ -1,7 +1,10 @@
-import React from "react";
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, Image} from "react-native";
+import React, {useState} from "react";
+import Icon  from "react-native-vector-icons/MaterialIcons";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Alert, Image, Modal} from "react-native";
 
 const ListScreen = () => {
+    const [isVisible, setIsVisible] = useState(false)
+    const [selectedItem, setSelectedItem] = useState(null);
     const friends = [
         {name: 'Mom',status: "Mobile", time: "Sunday"},
         {name: 'DadB',status: "Phone", time: "Yesterday"},
@@ -22,13 +25,76 @@ const ListScreen = () => {
             color: "#F3FCFF",
             justifyContent: "left",
             width: "100%",
-            }}>Recent</Text>
+        }}>Recent</Text>
         <FlatList
             keyExtractor={(item, index )=> index.name}
             data={friends}
             renderItem={({ item }) => { 
                 return (
-                    <TouchableOpacity style={styles.button} onPress={() => Alert.alert("Calling", "Calling to " + item.name)}>
+                    <View>
+            <Modal
+                transparent={true}
+                animationType="fade"
+                onRequestClose={() => setIsVisible(false)}
+                visible = {isVisible}
+            >
+                <View style = {{ 
+                    flex: "100%",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: "black",
+                    height: "100%",
+                }}>
+                    <View style = {{
+                        width: "100%",
+                        height: "80%",
+                        padding: 20,
+                        alignItems: "center",
+                    }}>
+                        <Image source={{ uri: "https://cdn.marvel.com/u/prod/marvel/i/mg/6/80/66bb7142277fc/clean.jpg" }}
+                                style={{
+                                    width: 250,
+                                    height: 250,
+                                    borderRadius: 200,
+                                    borderWidth: 2,
+                                    borderColor: 'white',
+                                    marginTop: 90,
+                                }}></Image>
+                        <Text style={{ 
+                                    width: "100%",
+                                    marginLeft: 20,
+                                    fontSize : 40,
+                                    textAlign : "center",
+                                    color: "#F3FCFF",
+                                    marginBottom : 5,
+                                    fontWeight: "bold",
+                                }}>{selectedItem?.name}  </Text>
+                        <Text style={{ 
+                                    width: "100%",
+                                    fontSize : 20,
+                                    textAlign : "center",
+                                    color: "#F3FCFF",
+                                    marginBottom : 30,
+                                }}>is calling...</Text>
+                        <TouchableOpacity
+                                style={styles.IconButton}
+                                onPress={() => setIsVisible(false)}>
+                                    <View style = {{ 
+                                        backgroundColor:"red",
+                                        borderRadius: 50,
+                                        paddingVertical: 10,
+                                        paddingHorizontal: 20,
+                                    }}>
+                                        <Icon name = "call-end" size = {24} color= "white"></Icon>
+                                    </View>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
+                    <TouchableOpacity style={styles.button} onPress={() => {
+                            setIsVisible(true); 
+                            setSelectedItem(item);
+                        }}>
                         <View style={{
                             margin: 0,
                             borderColor: "white",
@@ -69,6 +135,7 @@ const ListScreen = () => {
                             </View>
                         </View>
                         </TouchableOpacity>
+                    </View>
                 )
             }}
             />
