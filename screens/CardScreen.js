@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "center",
-        backgroundColor : "black"
+        backgroundColor : "white"
     },
     card: {
         backgroundColor: "white",
@@ -134,6 +134,11 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 18,
         color: "black"
+    },
+    noHero: {
+        fontSize: 25,
+        textAlign: "center",
+        alignItems: "center"
     }
 });
 
