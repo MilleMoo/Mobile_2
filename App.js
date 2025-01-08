@@ -7,6 +7,8 @@ import ListScreen from "./src/screens/ListScreen";
 import ModalScreen from "./src/screens/ModalScreen";
 import SwipeScreen from "./src/screens/SwipeScreen";
 import NewListScreen from "./src/screens/NewListScreen";
+import MyButton from "./src/components/MyButton";
+import CardScreen from "./src/screens/CardScreen";
 
 const Stack = createStackNavigator();
 
@@ -43,6 +45,16 @@ const App = () => {
           name="NewList"
           component={NewListScreen}
           options={{ title: "NewListScreen" }}
+        />
+        <Stack.Screen
+          name="MyButton"
+          component={MyButton}
+          options={{ title: "MyButton" }}
+        />
+        <Stack.Screen
+          name="Card"
+          component={CardScreen}
+          options={{ title: "CardScreen" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
