@@ -3,3 +3,4 @@ expo install @react-navigation/native
 expo install @react-navigation/stack
 npm install react-native-swipe-list-view
 npm install react-native-draggable-flatlist
+npm i @react-native-async-storage/async-storage
