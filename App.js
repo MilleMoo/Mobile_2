@@ -1,6 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import MsgScreen from "./src/screens/MsgScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import ComponentScreen from "./src/screens/ComponentScreen";
 import ListScreen from "./src/screens/ListScreen";
@@ -9,6 +10,7 @@ import SwipeScreen from "./src/screens/SwipeScreen";
 import NewListScreen from "./src/screens/NewListScreen";
 import MyButton from "./src/components/MyButton";
 import CardScreen from "./src/screens/CardScreen";
+import EffectScreen from "./src/screens/EffectScreen";
 
 const Stack = createStackNavigator();
 
@@ -55,6 +57,16 @@ const App = () => {
           name="Card"
           component={CardScreen}
           options={{ title: "CardScreen" }}
+        />
+        <Stack.Screen
+          name="Effect"
+          component={EffectScreen}
+          options={{ title: "EffectScreen" }}
+        />
+        <Stack.Screen
+          name="Msg"
+          component={MsgScreen}
+          options={{ title: "MsgScreen" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
