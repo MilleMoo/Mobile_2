@@ -10,6 +10,7 @@ npm install @react-navigation/bottom-tabs
 npm install victory-native
 npm install react-native-chart-kit react-native-svg
 npx expo install react-native-reanimated
+npx expo install react-native-svg
 
 backend
 npm install express sqlite3 bcryptjs jsonwebtoken cors body-parser dot
